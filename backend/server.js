@@ -18,12 +18,8 @@ connectDB();
 const PORT = process.env.PORT || 5000;
 const app = express();
 
-import cors from 'cors';
-
 app.use(cors({
-  origin: [
-    'https://nvmn-website.vercel.app', // <-- your Vercel frontend URL
-  ],
+  origin: 'https://nvmn-website.vercel.app', // your Vercel frontend URL
   credentials: true,
 }));
 app.use(express.json());
@@ -51,11 +47,9 @@ app.get('/healthcheck', (req, res) => {
 const __dirname = path.resolve();
 app.use('/uploads', express.static(path.join(__dirname, '/uploads')));
 
-// Note: Uncomment when you pre-build frontend and serve/proxy request through server
-
+// Uncomment this block if you want to serve frontend build from backend in production
 // if (process.env.NODE_ENV === 'production') {
 //   app.use(express.static(path.join(__dirname, '/frontend/build')));
-
 //   app.get('*', (req, res) =>
 //     res.sendFile(path.resolve(__dirname, 'frontend', 'build', 'index.html'))
 //   );
@@ -66,10 +60,11 @@ app.use(errorHandler);
 
 app.listen(
   PORT,
-  console.log(
-    `Server running in ${process.env.NODE_ENV} mode on port ${PORT}`.yellow.bold
-  )
+  () => {
+    console.log(
+      `Server running in ${process.env.NODE_ENV} mode on port ${PORT}`.yellow.bold
+    );
+  }
 );
 
-// Export the Express API
 export default app;
