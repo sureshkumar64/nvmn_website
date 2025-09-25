@@ -14,9 +14,7 @@ router.post('/', upload.array('images', 4), async (req, res) => {
       const results = [];
       const files = req.files;
       for (const file of files) {
-        console.log('Uploading file:', file.path);
         const result = await uploader(file.path);
-        console.log('Cloudinary upload result:', result);
         results.push(result); // Push full result: { url, id }
         fs.unlinkSync(file.path);
       }

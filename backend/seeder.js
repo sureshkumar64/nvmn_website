@@ -38,8 +38,6 @@ const importData = async () => {
     }));
 
     await Product.insertMany(sampleProducts);
-
-    console.log('Data Imported'.green.inverse);
     process.exit();
   } catch (error) {
     console.log(`Error: ${error.message}.red`);
@@ -52,8 +50,6 @@ const destroyData = async () => {
     await User.deleteMany();
     await Product.deleteMany();
     await Order.deleteMany();
-
-    console.log('Data Destroy'.red.inverse);
     process.exit();
   } catch (error) {
     console.log(`Error: ${error.message}.red`);

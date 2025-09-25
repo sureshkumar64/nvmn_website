@@ -84,10 +84,8 @@ const createProduct = asyncHandler(async (req, res) => {
   // If using multer, files will be in req.files
   if (req.files && req.files.length > 0) {
     for (const file of req.files) {
-      console.log('Uploading file:', file.path); // <-- Added log
       try {
         const uploadResult = await uploads(file.path, 'products');
-        console.log('Cloudinary upload result:', uploadResult);
         if (uploadResult && uploadResult.url) {
           images.push(uploadResult.url);
         } else {
