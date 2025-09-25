@@ -19,7 +19,7 @@ const PORT = process.env.PORT || 5000;
 const app = express();
 
 app.use(cors({
-  origin: 'https://nvmn-website.vercel.app', // your Vercel frontend URL
+  origin: ['https://nvmn-website.vercel.app', 'https://www.nvmn.store'],
   credentials: true,
 }));
 app.use(express.json());
