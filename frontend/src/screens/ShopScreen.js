@@ -274,8 +274,8 @@ const ShopScreen = ({ location, history }) => {
             <Message>{error}</Message>
           ) : (
             <Grid container spacing={2}>
-              {products.length !== 0 ? (
-                products.map((product) => (
+              {(products || []).length !== 0 ? (
+                (products || []).map((product) => (
                   <Grid
                     item
                     xs={activeLayout === 'fewCol' ? 12 : 6}
