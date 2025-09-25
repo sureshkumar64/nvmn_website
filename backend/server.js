@@ -18,9 +18,11 @@ connectDB();
 const PORT = process.env.PORT || 5000;
 const app = express();
 
+import cors from 'cors';
+
 app.use(cors({
   origin: [
-    process.env.FRONTEND_URL, // replace with your actual Vercel URL
+    'https://nvmn-website.vercel.app', // <-- your Vercel frontend URL
   ],
   credentials: true,
 }));
