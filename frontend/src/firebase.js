@@ -13,7 +13,6 @@ const firebaseConfig = {
 
 
 const app = initializeApp(firebaseConfig);
-console.log('FIREBASE CONFIG:', firebaseConfig);
 export const auth = getAuth(app);
 export { RecaptchaVerifier, signInWithPhoneNumber };
 export default app;
